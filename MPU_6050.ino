@@ -1,5 +1,5 @@
     void MPU_6050_setup(){
-      
+
       Wire.begin();
       Wire.beginTransmission(MPU6050_addr);
       Wire.write(0x6B);
@@ -8,7 +8,7 @@
     }
 
     void MPU_6050_loop(){
-      
+
       Wire.beginTransmission(MPU6050_addr);
       Wire.write(0x3B);
       Wire.endTransmission(false);
@@ -26,7 +26,7 @@
       GyroX = (GyroX/131)+5.3;
       GyroY = (GyroY/131)-.2;
       GyroZ = (GyroZ/131)+1.5;
-      
+
       //calculate the angle the accelerometer thinks you are at
       accpitch =  atan(AccY / sqrt(sq(AccX) + sq(AccZ))) * RadtoDeg;
       accpitch_f = .02* accpitch + .98 * accpitch_f;
@@ -35,7 +35,9 @@
 
       //calulate the angle the gyro thinks you are at
       gyropitch = pitch + GyroX*dt;
+      gyropitch_f = .02* gyropitch + .98 * gyropitch_f;
       gyroroll  = roll - GyroY*dt;
+      gyroroll_f = .02* gyroroll + .98 * gyroroll_f;
 
       pitch = .98 * gyropitch + .02 * accpitch_f;
       roll =  .98 * gyroroll + .02 * accroll_f;

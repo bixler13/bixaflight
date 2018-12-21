@@ -1,4 +1,4 @@
-      
+
       const int MPU6050_addr=0x68;
 
       //Global Variables
@@ -19,10 +19,10 @@
       int pitch_servo_pin = 8; //Pitch servo pin (Digital)
       int roll_servo1_pin = 9; //Roll servo1 pin (Digital)
       int roll_servo2_pin = 10; //Roll servo2 pin (Digital)
-      
+
       //Pitch Axis Configuration
       Servo pitch_servo;
-      
+
       float pitch_pidsum;
       float pitch_servo_angle;
 
@@ -51,7 +51,7 @@
 
       unsigned long int a,b,c;
       int x[15],ch1[15],ch[7],i;
-      //specifing arrays and variables to store values 
+      //specifing arrays and variables to store values
 
 
       int mode = 1; //mode 1 - stabilize, mode 2 - acro , mode 3 - manual
@@ -62,3 +62,5 @@
       float pitch_f = 0;
       float accpitch_f = 0;
       float accroll_f = 0;
+      float gyropitch_f = 0;
+      float gyroroll_f = 0;
